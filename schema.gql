@@ -1,0 +1,36 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""A book in the catalogue."""
+type Book {
+  description: String!
+  id: Int!
+  name: String!
+}
+
+input CreateBookInput {
+  description: String!
+  name: String!
+}
+
+type Mutation {
+  createBook(input: CreateBookInput!): Book!
+
+  """Deletes a book and returns the id it had."""
+  deleteBook(id: Int!): Int!
+  updateBook(id: Int!, input: UpdateBookInput!): Book!
+}
+
+type Query {
+  """A single book by id."""
+  book(id: Int!): Book!
+
+  """Every book in the catalogue."""
+  books: [Book!]!
+}
+
+input UpdateBookInput {
+  description: String
+  name: String
+}

@@ -1,0 +1,24 @@
+# Render Blueprint: create the service with "New > Blueprint" and point it at
+# this repository. The secret-ish values are marked sync: false so Render asks
+# for them in the dashboard instead of reading them from git.
+services:
+  - type: web
+    name: book-backend
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start:prod
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_PATH
+        value: data/books.sqlite
+      - key: AUTH0_ISSUER_URL
+        sync: false
+      - key: AUTH0_AUDIENCE
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false

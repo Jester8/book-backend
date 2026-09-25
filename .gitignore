@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+*.tsbuildinfo
+.DS_Store
+coverage
+# SQLite writes these next to the database while it is open.
+data/*.sqlite-journal
+data/*.sqlite-wal
+data/*.sqlite-shm
