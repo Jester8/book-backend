@@ -6,7 +6,9 @@ services:
     name: book-backend
     runtime: node
     plan: free
-    buildCommand: npm ci && npm run build
+    # --include=dev: NODE_ENV=production would otherwise skip devDependencies,
+    # and the Nest CLI and TypeScript compiler needed for the build are there.
+    buildCommand: npm ci --include=dev && npm run build
     startCommand: npm run start:prod
     healthCheckPath: /health
     envVars:
